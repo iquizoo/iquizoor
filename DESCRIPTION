@@ -1,0 +1,11 @@
+Package: iquizoor
+Type: Package
+Title: Utility functions used in developing of Iquizoo projects
+Version: 0.0.0.999
+Authors@R: person("Liang", "Zhang", email = "psychelzh@outlook.com",
+                 role = c("aut", "cre"))
+Description: Iquizoo is the English name of the company I am currently working
+    for. Many jobs here I do are completed by me with programming language R.
+    To facilitate work efficiency, this package was developed. Only used for
+    reports generating currently, it might be extended if needed in the future.
+License: MIT + file LICENSE
