@@ -32,7 +32,9 @@ render_part_normal <- function(text) {
 #'   be reported
 #' @export
 render_part_body <- function(heading, content, ab_ids) {
-  content_vector <- character(length = length(ab_ids))
+  content_vector <- setNames(
+    character(length = length(ab_ids)), ab_ids
+  )
   for (ab_id in ab_ids) {
     content_vector[ab_id] <- stringr::str_glue(content, .open = "<<", .close = ">>")
   }
