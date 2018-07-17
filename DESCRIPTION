@@ -1,7 +1,7 @@
 Package: iquizoor
 Type: Package
 Title: Utility functions used in developing of Iquizoo projects
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: person("Liang", "Zhang", email = "psychelzh@outlook.com",
                  role = c("aut", "cre"))
 Description: Iquizoo is the English name of the company I am currently working
