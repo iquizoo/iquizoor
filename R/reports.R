@@ -32,14 +32,32 @@ render_part_normal <- function(text) {
 #'   be reported
 #' @export
 render_part_body <- function(heading, content, ab_ids) {
-  content_vector <- setNames(
-    character(length = length(ab_ids)), ab_ids
-  )
+  content_vector <- character(length(ab_ids))
+  names(content_vector) <- ab_ids
   for (ab_id in ab_ids) {
     content_vector[ab_id] <- stringr::str_glue(content, .open = "<<", .close = ">>")
   }
   contents <- paste(content_vector, collapse = "\n\n")
   md <- render_heading_content(heading, contents)
+  return(md)
+}
+
+#' Render heading and content section
+#'
+#' @param heading The section title
+#' @param content The section content
+#' @param hlevel The heading level, default to 1
+#' @param style The name of the custom style
+#' @param glue Will the content be evaluated by \code{\link[stringr]{str_glue}}?
+#' @param ... Additional arguments passed to \code{\link[stringr]{str_glue}}
+#' @return The markdown string to render as a section
+#' @export
+render_heading_content <- function(heading, content, hlevel = 1, style = "", glue = FALSE, ...) {
+  heading_md <- customize_style(render_heading(heading, hlevel), style = style)
+  md <- paste(heading_md, content, sep = "\n\n")
+  if (glue) {
+    md <- purrr::map_chr(md, stringr::str_glue, ...)
+  }
   return(md)
 }
 
@@ -66,23 +84,5 @@ customize_style <- function(text, style = "") {
   )
   suffix <- ifelse(style == "", "", ":::")
   md <- paste(prefix, text, suffix, sep = "\n")
-  return(md)
-}
-
-#' Render heading and content section
-#'
-#' @param heading The section title
-#' @param content The section content
-#' @param hlevel The heading level, default to 1
-#' @param style The name of the custom style
-#' @param glue Will the content be evaluated by \code{\link[stringr]{str_glue}}?
-#' @param ... Additional arguments passed to \code{\link[stringr]{str_glue}}
-#' @return The markdown string to render as a section
-render_heading_content <- function(heading, content, hlevel = 1, style = "", glue = FALSE, ...) {
-  heading_md <- customize_style(render_heading(heading, hlevel), style = style)
-  md <- paste(heading_md, content, sep = "\n\n")
-  if (glue) {
-    md <- purrr::map_chr(md, stringr::str_glue, ...)
-  }
   return(md)
 }
