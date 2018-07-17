@@ -12,6 +12,9 @@ get_tmpl_name(part, customer_id, report_type = NULL, ext = "Rmd")
 \item{customer_id}{The customer identifier}
 
 \item{report_type}{The report type, and default to \code{\link{NULL}}}
+
+\item{ext}{The file extension of the template, the default value is
+\code{Rmd}, namely R markdown file}
 }
 \description{
 Get template file name based on current configuration
