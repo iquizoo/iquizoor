@@ -3,6 +3,8 @@
 #' @param part The report part
 #' @param customer_id The customer identifier
 #' @param report_type The report type, and default to \code{\link{NULL}}
+#' @param ext The file extension of the template, the default value is
+#'   \code{Rmd}, namely R markdown file
 #' @export
 get_tmpl_name <- function(part, customer_id, report_type = NULL, ext = "Rmd") {
   if (is.null(report_type)) {
