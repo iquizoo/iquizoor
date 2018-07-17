@@ -9,3 +9,7 @@ Description: Iquizoo is the English name of the company I am currently working
     To facilitate work efficiency, this package was developed. Only used for
     reports generating currently, it might be extended if needed in the future.
 License: MIT + file LICENSE
+Imports:
+    stringr,
+    purrr
+RoxygenNote: 6.0.1
